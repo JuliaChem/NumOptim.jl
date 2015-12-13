@@ -1,5 +1,7 @@
 module OptimJulia
 
-# package code goes here
+export Newton
 
-end # module
+include("Newton.jl")
+
+end
