@@ -1,5 +1,5 @@
 using Calculus
-function Newton(f, x0; error = 0.000001, maxiter = 100, iter = true)
+function Newton(f; x0 = 1, error = 0.000001, maxiter = 100, iter = true)
 
       # Symbolic derivatives
       dfk1 = differentiate(f)
