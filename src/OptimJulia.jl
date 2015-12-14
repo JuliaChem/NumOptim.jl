@@ -2,9 +2,9 @@ module OptimJulia
 using Calculus
 
 export Newton
-export Quasi-Newton
+export QuasiNewton
 
 include("Newton.jl")
-include("Quasi-Newton.jl")
+include("QuasiNewton.jl")
 
 end
