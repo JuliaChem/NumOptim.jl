@@ -30,7 +30,7 @@ function Newton(f; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
                   if iter == true
                         if i == 1
                               @printf("Iter\t X\t\t f(x)\t\t |err|\n")
-                              println("===================================================")
+                              println("======================================================")
                         end
                         @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, fx(xk), err)
 
