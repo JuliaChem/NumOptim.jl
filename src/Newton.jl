@@ -1,3 +1,8 @@
+@doc """
+       Newton method for local optimization (single variable)
+       PhD KBSS
+ """ ->
+
 function Newton(f; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
 
       # Symbolic derivatives
