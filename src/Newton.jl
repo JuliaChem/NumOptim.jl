@@ -3,7 +3,7 @@
 
        Supported by:
        -PhD Kelvyn B. Sánchez
-       -MSc. Lorena S. Galicia
+       -MSc Lorena S. Galicia
  """ ->
 
 function Newton(f; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
