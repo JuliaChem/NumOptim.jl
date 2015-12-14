@@ -1,6 +1,9 @@
 @doc """
        QuasiNewton method for local optimization (single variable)
-       PhD KBSS
+
+       Supported by:
+       -PhD Kelvyn B. Sánchez
+       -MSc. Lorena S. Galicia 
  """ ->
 function QuasiNewton(f; x0 = [1 2], error = 0.0001, maxiter = 100, iter = true)
 

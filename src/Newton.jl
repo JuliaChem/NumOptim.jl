@@ -1,6 +1,9 @@
 @doc """
-       Newton method for local optimization (single variable)
-       PhD KBSS
+       QuasiNewton method for local optimization (single variable)
+
+       Supported by:
+       -PhD Kelvyn B. Sánchez
+       -MSc. Lorena S. Galicia
  """ ->
 
 function Newton(f; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
