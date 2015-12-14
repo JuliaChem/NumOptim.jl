@@ -10,7 +10,7 @@ for i = 1:10
 end
 
 for i = 1:10
-      QuasiNewton(f)
+      QuasiNewton(f, x0 = [i i+1])
       println("=========================================")
       println("Test $i with QuasiNewton algorithm passed")
 end
