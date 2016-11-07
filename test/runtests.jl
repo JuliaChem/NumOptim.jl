@@ -1,5 +1,6 @@
 using OptimJulia
 using Base.Test
+using SymPy
 
 x = Sym("x")
 
