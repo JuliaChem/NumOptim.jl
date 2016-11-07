@@ -7,7 +7,7 @@
  """ ->
 
 function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
-
+println(var)
       # Symbolic derivatives using Module SymPy
       dfk1 = diff(f, var)
       dfk2 = diff(dfk1, var)
@@ -21,8 +21,8 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
       while err > error
             x_num = x0
 
-            xk = N(var |> subs(x,x_num)) - N(dfk1 |> subs(x, x_num)) / N(dfk2 |> subs(x, x_num))
-            err = abs((xk -  N(var |> subs(x,x_num))) / xk)
+            xk = N(var |> subs(var,x_num)) - N(dfk1 |> subs(var, x_num)) / N(dfk2 |> subs(var, x_num))
+            err = abs((xk -  N(var |> subs(var,x_num))) / xk)
 
                   if iter == true
                         if i == 1
@@ -36,7 +36,7 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
                               println("======================================================")
                         end
 
-                        @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, N(f |> subs(x,x_num)), err)
+                        @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, N(f |> subs(var,x_num)), err)
                   end
 
             x0 = xk
@@ -51,5 +51,5 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
       iter == true ? tf = time_ns() : nothing # To measure algorithm performance
       iter == true ? println("elapse time: ", (tf - ti)/1.0e9, " seconds") : nothing
 
-      return x_num,  N(f |> subs(x,x_num))
+      return x_num,  N(f |> subs(var,x_num))
 end
