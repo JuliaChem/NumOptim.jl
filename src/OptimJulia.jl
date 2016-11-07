@@ -1,5 +1,6 @@
 module OptimJulia
 using Calculus
+using SymPy
 
 export Newton
 export QuasiNewton

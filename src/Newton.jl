@@ -1,56 +1,55 @@
 @doc """
-       QuasiNewton method for local optimization (single variable)
+       Newton method for local optimization (single variable)
 
        Supported by:
-       -PhD Kelvyn B. Sánchez
-       -MSc Lorena S. Galicia
+       Ph D Kelvyn B. Sánchez
+       e-mail: kelvyn.baruc@gmail.com
  """ ->
 
-function Newton(f; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
+function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
 
-      # Symbolic derivatives
-      dfk1 = differentiate(f)
-      dfk2 = differentiate(dfk1)
-
-      # Convert to function from derivative::expression
-      @eval function df1(x)
-            $dfk1
-      end
-
-      @eval function df2(x)
-            $dfk2
-      end
-
-      @eval function fx(x)
-            $f
-      end
+      # Symbolic derivatives using Module SymPy
+      dfk1 = diff(f, var)
+      dfk2 = diff(dfk1, var)
 
       err = Inf
       i = 1
-      x = 0
-      # Numerical iterations
-      while err > error
-            x = x0
+      x_num = 0
 
-            xk = x - df1(x) / df2(x)
-            err = abs((xk - x) / xk)
+      # Numeric iterations
+      iter == true ? ti = time_ns() : nothing # To measure algorothm performance
+      while err > error
+            x_num = x0
+
+            xk = N(x |> subs(x,x_num)) - N(dfk1 |> subs(x, x_num)) / N(dfk2 |> subs(x, x_num))
+            err = abs((xk -  N(x |> subs(x,x_num))) / xk)
 
                   if iter == true
                         if i == 1
+                              println("======================================================")
+                              println(" Newton Solver for Unconstrained Optimization (0.0.2)")
+                        end
+
+                        if i == 1 || ceil((i/1)/10) == (i/1)/10
+                              println("======================================================")
                               @printf("Iter\t X\t\t f(x)\t\t |err|\n")
                               println("======================================================")
                         end
-                        @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, fx(xk), err)
 
-
+                        @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, N(f |> subs(x,x_num)), err)
                   end
 
+            x0 = xk
+            x_num = xk
+            i += 1
+
             if i == maxiter
+                  throw(ErrorException("Not Solved!. Iteration limit reached."))
                   break
             end
-            x0 = xk
-            x = xk
-            i += 1
       end
-      return x, fx(x)
+      iter == true ? tf = time_ns() : nothing # To measure algorithm performance
+      iter == true ? println("elapse time: ", (tf - ti)/1.0e9, " seconds") : nothing
+
+      return x_num,  N(f |> subs(x,x_num))
 end
