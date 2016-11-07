@@ -14,6 +14,17 @@ env:
       - PYTHON=python3 # python 3.5
       - PYTHON=Conda-python # not actually a python version, here to test Conda.jl's python
 
+matrix:
+      exclude:
+            - os: osx
+            env: PYTHON=python3 # I'm not sure how to install Python 3 on Travis OSX
+
+before_install:
+      - test "x$TRAVIS_OS_NAME" = xosx -o "x$PYTHON" = xConda-python || (sudo apt-get -qq update && sudo apt-get install -y $PYTHON)
+
+after_success:
+      - julia -e 'cd(Pkg.dir("PyCall")); Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
+
 notifications:
       email: kelvyn.baruc@gmail.com
 # uncomment the following lines to override the default test script
