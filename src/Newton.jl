@@ -21,8 +21,8 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
       while err > error
             x_num = x0
 
-            xk = N(x |> subs(x,x_num)) - N(dfk1 |> subs(x, x_num)) / N(dfk2 |> subs(x, x_num))
-            err = abs((xk -  N(x |> subs(x,x_num))) / xk)
+            xk = N(var |> subs(x,x_num)) - N(dfk1 |> subs(x, x_num)) / N(dfk2 |> subs(x, x_num))
+            err = abs((xk -  N(var |> subs(x,x_num))) / xk)
 
                   if iter == true
                         if i == 1
