@@ -8,7 +8,6 @@ julia:
 env:
   global:
     - PYTHON=conda
-  global:
 
 before_install:
     #install mpmath to test functionallity
