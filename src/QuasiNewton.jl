@@ -21,8 +21,8 @@ function QuasiNewton(f, var; x0 = [1 2], error = 0.0001, maxiter = 100, iter = t
       while err > error
             x_num = x0
 
-            xk = x_num[2]-(N(dfk1 |> subs(x,x_num[2]))/(N(dfk1 |> subs(x,x_num[2])) -
-                  N(dfk1 |> subs(x,x_num[1]))))*(x_num[2] - x_num[1])
+            xk = x_num[2]-(N(dfk1 |> subs(var,x_num[2]))/(N(dfk1 |> subs(var,x_num[2])) -
+                  N(dfk1 |> subs(var,x_num[1]))))*(x_num[2] - x_num[1])
 
             if xk > x_num[2]
                   err = abs(x_num[1] - xk)
@@ -49,7 +49,7 @@ function QuasiNewton(f, var; x0 = [1 2], error = 0.0001, maxiter = 100, iter = t
                               println("===========================================================")
                         end
 
-                        @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, N(f |> subs(x,xk)), err)
+                        @printf("%i\t %4.6e\t %4.6e\t %4.6e\n", i, xk, N(f |> subs(var,xk)), err)
                   end
 
             if i == maxiter
@@ -61,5 +61,5 @@ function QuasiNewton(f, var; x0 = [1 2], error = 0.0001, maxiter = 100, iter = t
       end
       iter == true ? tf = time_ns() : nothing # To measure algorithm performance
       iter == true ? println("elapse time: ", (tf - ti)/1.0e9, " seconds") : nothing
-      return xk,  N(f |> subs(x,xk))
+      return xk,  N(f |> subs(var,xk))
 end

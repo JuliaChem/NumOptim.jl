@@ -7,7 +7,6 @@
  """ ->
 
 function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
-println(var)
       # Symbolic derivatives using Module SymPy
       dfk1 = diff(f, var)
       dfk2 = diff(dfk1, var)

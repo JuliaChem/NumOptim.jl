@@ -1,11 +1,10 @@
 module OptimJulia
-using Calculus
-using SymPy
+      using SymPy
 
-export Newton
-export QuasiNewton
+      export Newton
+      export QuasiNewton
 
-include("Newton.jl")
-include("QuasiNewton.jl")
+      include("Newton.jl")
+      include("QuasiNewton.jl")
 
 end
