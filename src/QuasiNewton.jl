@@ -41,7 +41,6 @@ function QuasiNewton(f, var; x0 = [1 2], error = 0.0001, maxiter = 100, iter = t
                               if i == 1
                                     println("===========================================================")
                                     println(" QuasiNewton Solver for Unconstrained Optimization (0.0.2)")
-                                    println(" ")
                               end
 
                               if i == 1 || ceil((i/1)/10) == (i/1)/10
@@ -59,12 +58,17 @@ function QuasiNewton(f, var; x0 = [1 2], error = 0.0001, maxiter = 100, iter = t
 
                   i += 1
             end
+
+            println("===========================================================")
+            println(" ")
+
             iter == true ? tf = time_ns() : nothing # To measure algorithm performance
             iter == true ? println("elapse time: ", (tf - ti)/1.0e9, " seconds") : nothing
-            
+
             return xk,  N(f |> subs(var,xk))
 
       catch Msg
+            println("===========================================================")
             println(Msg)
             return NaN, NaN
       end

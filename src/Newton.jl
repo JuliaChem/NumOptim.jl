@@ -29,7 +29,6 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
                               if i == 1
                                     println("======================================================")
                                     println(" Newton Solver for Unconstrained Optimization (0.0.2)")
-                                    println(" ")
                               end
 
                               if i == 1 || ceil((i/1)/10) == (i/1)/10
@@ -47,15 +46,19 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
 
                   if i == maxiter
                         throw(ErrorException("Not Solved!. Iteration limit reached."))
-                        return NaN, NaN
                   end
             end
+
+            println("======================================================")
+            println(" ")
+
             iter == true ? tf = time_ns() : nothing # To measure algorithm performance
             iter == true ? println("elapse time: ", (tf - ti)/1.0e9, " seconds") : nothing
 
             return x_num,  N(f |> subs(var,x_num))
 
       catch Msg
+            println("======================================================")
             println(Msg)
             return NaN, NaN
       end
