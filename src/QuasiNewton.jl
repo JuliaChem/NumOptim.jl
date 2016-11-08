@@ -54,7 +54,7 @@ function QuasiNewton(f, var; x0 = [1 2], error = 0.0001, maxiter = 100, iter = t
 
             if i == maxiter
                   throw(ErrorException("Not Solved!. Iteration limit reached."))
-                  break
+                  return NaN, NaN
             end
 
             i += 1

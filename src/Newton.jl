@@ -44,7 +44,7 @@ function Newton(f, var; x0 = 1, error = 0.0001, maxiter = 100, iter = true)
 
             if i == maxiter
                   throw(ErrorException("Not Solved!. Iteration limit reached."))
-                  break
+                  return NaN, NaN
             end
       end
       iter == true ? tf = time_ns() : nothing # To measure algorithm performance
