@@ -148,7 +148,7 @@ function Newton(f, vars, x0; error = 0.0001, maxiter = 100, iter = true)
             return x_num,  f_num, err
 
       catch Msg
-            println("======================================================")
+            println(separator)
             println(Msg)
             return NaN, NaN, NaN
       end
