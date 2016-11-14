@@ -13,3 +13,6 @@ before_install:
     #install mpmath to test functionallity
   - julia -e 'ENV["PYTHON"]=""; Pkg.add("PyCall"); Pkg.build("PyCall")'
   - julia -e 'Pkg.add("Conda"); using Conda; Conda.add("SymPy")'
+
+after_success:
+- julia -e 'cd(Pkg.dir("OptimJulia")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
