@@ -1,5 +1,5 @@
 @doc """
-       Newton method for local optimization (multivariable variable)
+       Newton method for local optimization (multivariable)
 
        Supported by:
 
