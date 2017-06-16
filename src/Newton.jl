@@ -6,10 +6,6 @@
        Ph D Kelvyn B. Sánchez
        e-mail: kelvyn.baruc@gmail.com
        GitHub: Kelvyn88
-
-       Eng. Gabriel Hernández Morales
-       e-mail: gabo1178@hotmail.com
-       GitHub: Gabo1178
  """ ->
 
 function Newton(f, vars, x0; error = 0.0001, maxiter = 100, iter = true)
