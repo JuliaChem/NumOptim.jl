@@ -94,12 +94,20 @@ function Newton(f, vars, x0; error = 0.0001, maxiter = 100, iter = true)
                               # Header message and version
                               println(separator)
                               msg1 = @sprintf(" Newton Solver for Unconstrained Optimization %s ", version)
+                              msg2 = @sprintf(" Ph D Kelvyn B. Sánchez ")
                               header_left = ceil((length(separator) - length(msg1))/2)
                               header_right = (length(separator) - length(msg1)) - header_left
                               msg1_left = ":"^convert(Int32,header_left)
                               msg1_right = ":"^convert(Int32,header_right)
                               msg1 = string(msg1_left, msg1, msg1_right)
                               println(msg1)
+
+                              header_left = ceil((length(separator) - length(msg2))/2)
+                              header_right = (length(separator) - length(msg2)) - header_left
+                              msg2_left = ":"^convert(Int32,header_left)
+                              msg2_right = ":"^convert(Int32,header_right)
+                              msg2 = string(msg2_left, msg2, msg2_right)
+                              println(msg2)
                         end
 
                         if count == 1 || ceil((count/1)/10) == (count/1)/10
