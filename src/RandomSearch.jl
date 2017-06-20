@@ -9,7 +9,7 @@
 """ ->
 
 function RandomSearch(f, vars, lb, up; maxiter = 100, iter = true)
-      try
+      #try
             const version = Pkg.installed("OptimJulia")
             length(vars) == 0 ? len = 1 : len = length(vars)
 
@@ -30,7 +30,7 @@ function RandomSearch(f, vars, lb, up; maxiter = 100, iter = true)
                   # Numeric evaluations for simbolic variables
                   for j=1:len
                         varX[j] = lb[j] + (up[j] - lb[j])*rand()
-                        fn = subs(fn, vars[j], varX[j])
+                        fn = fn |> subs(vars[j], varX[1,j])
                   end
 
                   fn = convert(Float32, fn)
@@ -93,10 +93,10 @@ function RandomSearch(f, vars, lb, up; maxiter = 100, iter = true)
             iter == true ? tf = time_ns() : nothing # To measure algorithm performance
             iter == true ? println("elapse time: ", (tf - ti)/1.0e9, " seconds") : nothing
 
-            return [varX, maxfn]
-      catch Msg
-            println(separator)
-            println(Msg)
-            return NaN, NaN, NaN
-      end
+            return varXX, maxfn
+      #catch Msg
+      #      println(separator)
+      #      println(Msg)
+      #      return NaN, NaN, NaN
+      #end
 end
