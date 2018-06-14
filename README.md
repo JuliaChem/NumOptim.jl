@@ -1,5 +1,5 @@
 
-## OptimJulia
+## NumOptim
 
 [![DOI](https://zenodo.org/badge/47938283.svg)](https://zenodo.org/badge/latestdoi/47938283)
 
@@ -7,8 +7,7 @@
 
 [![Build Status](https://travis-ci.org/Kelvyn88/OptimJulia.jl.svg?branch=master)](https://travis-ci.org/Kelvyn88/OptimJulia.jl)
 
-Basic solvers for mathematical optimization implemented in Julia.
-Book: Steven C. Chapra, Applied Numerical Method with MATLAB® for Engineers and Scientists. Third Edition, 2008
+Numerical optimization algorithms written in pure Julia. Includes examples for chemical engineering applications.
 
 This is an unregistred package. To install on Julia use:
 
@@ -19,9 +18,7 @@ To track changes across versions, the package should be registered into the loca
 # Current status of the project
 Current release (v0.0.5), contains the basic functionality.
 
-Developed at the Instituto Tecnologico de Orizaba, Mexico.
-
-Ph D Kelvyn Baruc Sánchez Sánchez.
+PhD Kelvyn Baruc Sánchez-Sánchez.
 email: kelvyn.baruc@gmail.com
 
 
