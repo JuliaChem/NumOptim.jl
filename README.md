@@ -1,6 +1,7 @@
 
 ## NumOptim
 
+
 [![DOI](https://zenodo.org/badge/47938283.svg)](https://zenodo.org/badge/latestdoi/47938283)
 
 [![Coverage Status](https://coveralls.io/repos/github/Kelvyn88/OptimJulia.jl/badge.svg?branch=master)](https://coveralls.io/github/Kelvyn88/OptimJulia.jl?branch=master)
